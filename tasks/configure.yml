@@ -1,0 +1,17 @@
+---
+ - name : configure the firewall rules
+   firewalld : 
+          port : 80/tcp
+          permanent : yes
+          immediate : yes
+          state : enabled 
+ - name : reload the service of firewall
+   service : 
+         name : firewalld
+         state : reloaded
+ - name : copy the index file to apache directory 
+   copy : 
+        src : /etc/ansible/roles/apache/files/index.html
+        dest : /var/www/html/index.html
+
+
